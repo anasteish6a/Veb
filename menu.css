@@ -1,0 +1,154 @@
+.dishes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    border-radius: 35px;
+    cursor: pointer;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    background-color: white;
+    transition: border 0.3s ease;
+}
+
+.dish-card:hover {
+    border: 2px solid tomato;
+}
+
+.dish-card:hover .add-btn {
+    background-color: tomato;
+}
+
+.dish-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;  
+    object-fit: cover; 
+    border-radius: 35px;
+    margin-bottom: 15px;
+}
+
+
+.dish-card .price {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+
+.dish-card .dish-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    min-height: 60px;
+}
+
+
+.dish-card .weight {
+    color: #999;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.add-btn {
+    background-color: #f1eee9;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+section h2 {
+    margin-bottom: 25px;
+    margin-top: 40px;
+}
+
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: tomato;
+}
+
+nav a#active {
+    color: tomato;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 30px 40px;
+    margin-top: auto;
+}
+
+
+@media screen and (max-width: 800px) {
+    .dishes-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    nav {
+        justify-content: space-between;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        font-size: 24px;
+    }
+    
+    section h2 {
+        text-align: center;
+    }
+    
+    .dish-card {
+        padding: 20px 25px;
+    }
+}
