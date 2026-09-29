@@ -317,3 +317,43 @@ footer {
     background-color: tomato;
     border-color: tomato;
 }
+
+/* Стили для раздела "Ваш заказ" */
+.selected-category {
+    margin-bottom: 25px;
+}
+
+.selected-category h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.selected-category .selected-dish {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.total-cost {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.total-cost h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.total-cost .total-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: tomato;
+    margin: 0;
+}
