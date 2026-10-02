@@ -1,6 +1,4 @@
-// Массив всех блюд ресторана
 const dishes = [
-    // Супы
     {
         keyword: 'cheese-soup',
         name: 'Сырный суп',
@@ -26,7 +24,6 @@ const dishes = [
         image: 'images/chicken_soup.png'
     },
     
-    // Главные блюда
     {
         keyword: 'fried-potatoes',
         name: 'Жареная картошка с грибами',
@@ -52,7 +49,6 @@ const dishes = [
         image: 'images/chickencutletsandmashedpotatoes.jpg'
     },
     
-    // Напитки
     {
         keyword: 'orange-juice',
         name: 'Апельсиновый сок',
