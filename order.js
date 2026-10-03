@@ -21,7 +21,7 @@ function updateOrderSection() {
         
         if (selectedDishes[category]) {
             const dish = selectedDishes[category];
-            dishParagraph.textContent = dish.name + ' ' + dish.price + '₽';
+            dishParagraph.textContent = dish.name + ' ' + dish.price + 'руб.';
             categoryTitle.style.display = 'block';
             totalPrice += dish.price;
             hasAnySelection = true;

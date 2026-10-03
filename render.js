@@ -1,7 +1,7 @@
 function createDishCard(dish) {
     const card = document.createElement('div');
     card.className = 'dish-card';
-    card.setAttribute('data-dish', dish.keyword);  // data-атрибут с названием на латинице
+    card.setAttribute('data-dish', dish.keyword);  
     
     const img = document.createElement('img');
     img.src = dish.image;
