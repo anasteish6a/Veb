@@ -26,119 +26,169 @@
     <main>
         <section id="soups">
             <h2>Выберите суп</h2>
-            <div class="dishes-grid">
-
+            
+            <div class="filters">
+                <a href="#" class="filter-btn" data-category="soup" data-kind="fish">рыбный</a>
+                <a href="#" class="filter-btn" data-category="soup" data-kind="meat">мясной</a>
+                <a href="#" class="filter-btn" data-category="soup" data-kind="veg">вегетарианский</a>
             </div>
+            
+            <div class="dishes-grid"></div>
         </section>
 
         <section id="main-dishes">
             <h2>Выберите главное блюдо</h2>
-            <div class="dishes-grid">
-                <!-- Карточки добавятся через JavaScript -->
+            
+            <div class="filters">
+                <a href="#" class="filter-btn" data-category="main" data-kind="fish">рыбное</a>
+                <a href="#" class="filter-btn" data-category="main" data-kind="meat">мясное</a>
+                <a href="#" class="filter-btn" data-category="main" data-kind="veg">вегетарианское</a>
             </div>
+            
+            <div class="dishes-grid"></div>
+        </section>
+
+        <section id="salads">
+            <h2>Выберите салат или стартер</h2>
+            
+            <div class="filters">
+                <a href="#" class="filter-btn" data-category="salad" data-kind="fish">рыбный</a>
+                <a href="#" class="filter-btn" data-category="salad" data-kind="meat">мясной</a>
+                <a href="#" class="filter-btn" data-category="salad" data-kind="veg">вегетарианский</a>
+            </div>
+            
+            <div class="dishes-grid"></div>
         </section>
 
         <section id="drinks">
             <h2>Выберите напиток</h2>
-            <div class="dishes-grid">
-                <!-- Карточки добавятся через JavaScript -->
-            </div>
-        </section>
-
-    </main>
-<section id="order-form">
-    <h2>Сделать заказ</h2>
-    <form action="https://httpbin.org/post" method="POST" class="order-form">
-        <div class="form-columns">
-            <div class="order-section">
-                <h3>Ваш заказ</h3>
-                <div class="selected-category" id="selected-soup">
-                    <h4>Суп</h4>
-                    <p class="selected-dish">Ничего не выбрано</p>
-                </div>
-                
-                <div class="selected-category" id="selected-main">
-                    <h4>Главное блюдо</h4>
-                    <p class="selected-dish">Блюдо не выбрано</p>
-                </div>
-                
-                <div class="selected-category" id="selected-drink">
-                    <h4>Напиток</h4>
-                    <p class="selected-dish">Напиток не выбран</p>
-                </div>
-                
-                <div class="total-cost" id="total-cost">
-                    <h4>Стоимость заказа</h4>
-                    <p class="total-price">0₽</p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="comment">Комментарии к заказу</label>
-                    <textarea id="comment" name="comment" rows="4"></textarea>
-                </div>
+            
+            <div class="filters">
+                <a href="#" class="filter-btn" data-category="drink" data-kind="cold">холодный</a>
+                <a href="#" class="filter-btn" data-category="drink" data-kind="hot">горячий</a>
             </div>
             
-            <div class="customer-section">
-                <h3>Ваши данные</h3>
-                
-                <div class="form-group">
-                    <label for="name">Имя</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <input type="checkbox" id="newsletter" name="newsletter" checked>
-                    <label for="newsletter">Получать информацию о скидках и акциях</label>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Номер телефона</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Адрес доставки</label>
-                    <input type="text" id="address" name="address" required>
-                    <span class="hint">Доставка осуществляется только по Москве</span>
-                </div>
-                
-                <div class="form-group">
-                    <p>Время доставки:</p>
-                    <div class="radio-group">
-                        <input type="radio" id="fast" name="delivery_time" value="fast" required>
-                        <label for="fast">Как можно скорее</label>
-                    </div>
-                    <div class="radio-group">
-                        <input type="radio" id="specific-time" name="delivery_time" value="specific">
-                        <label for="specific-time">К указанному времени</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="delivery-time">Укажите время доставки</label>
-                    <input type="time" id="delivery-time" name="delivery_time_value" 
-                           min="07:00" max="23:00" step="300">
-                    <span class="hint">Доступное время доставки с 7:00 до 23:00</span>
-                </div>
-                
-                <div class="form-buttons">
-                    <button type="reset" class="btn-reset">Сбросить</button>
-                    <button type="submit" class="btn-submit">Отправить</button>
-                </div>
+            <div class="dishes-grid"></div>
+        </section>
+
+        <section id="desserts">
+            <h2>Выберите десерт</h2>
+            
+            <div class="filters">
+                <a href="#" class="filter-btn" data-category="dessert" data-kind="small">маленькая порция</a>
+                <a href="#" class="filter-btn" data-category="dessert" data-kind="medium">средняя порция</a>
+                <a href="#" class="filter-btn" data-category="dessert" data-kind="large">большая порция</a>
             </div>
-        </div>
-    </form>
-</section>
+            
+            <div class="dishes-grid"></div>
+        </section>
+
+        <section id="order-form">
+            <h2>Сделать заказ</h2>
+            <form action="https://httpbin.org/post" method="POST" class="order-form">
+                <div class="form-columns">
+                    <div class="order-section">
+                        <h3>Ваш заказ</h3>
+                        
+                        <div class="selected-category" id="selected-soup">
+                            <h4>Суп</h4>
+                            <p class="selected-dish">Ничего не выбрано</p>
+                        </div>
+                        
+                        <div class="selected-category" id="selected-main">
+                            <h4>Главное блюдо</h4>
+                            <p class="selected-dish">Блюдо не выбрано</p>
+                        </div>
+                        
+                        <div class="selected-category" id="selected-salad">
+                            <h4>Салат/стартер</h4>
+                            <p class="selected-dish">Салат не выбран</p>
+                        </div>
+                        
+                        <div class="selected-category" id="selected-drink">
+                            <h4>Напиток</h4>
+                            <p class="selected-dish">Напиток не выбран</p>
+                        </div>
+                        
+                        <div class="selected-category" id="selected-dessert">
+                            <h4>Десерт</h4>
+                            <p class="selected-dish">Десерт не выбран</p>
+                        </div>
+                        
+                        <div class="total-cost" id="total-cost">
+                            <h4>Стоимость заказа</h4>
+                            <p class="total-price">0₽</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment">Комментарии к заказу</label>
+                            <textarea id="comment" name="comment" rows="4"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="customer-section">
+                        <h3>Ваши данные</h3>
+                        
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            <label for="newsletter">Получать информацию о скидках и акциях</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Номер телефона</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Адрес доставки</label>
+                            <input type="text" id="address" name="address" required>
+                            <span class="hint">Доставка осуществляется только по Москве</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <p>Время доставки:</p>
+                            <div class="radio-group">
+                                <input type="radio" id="asap" name="delivery_time" value="asap" required>
+                                <label for="asap">Как можно скорее</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="specific-time" name="delivery_time" value="specific">
+                                <label for="specific-time">К указанному времени</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="delivery-time">Укажите время доставки</label>
+                            <input type="time" id="delivery-time" name="delivery_time_value" 
+                                   min="07:00" max="23:00" step="300">
+                            <span class="hint">Доступное время доставки с 7:00 до 23:00</span>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="reset" class="btn-reset">Сбросить</button>
+                            <button type="submit" class="btn-submit">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
 
     <footer id="contacts">
         <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
         <p style="margin-top: 10px; font-size: 14px; color: #ccc;">@ 2026 Delicious Food</p>
     </footer>
+
     <script src="dishes.js"></script>
     <script src="render.js"></script>
     <script src="order.js"></script>

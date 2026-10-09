@@ -1,7 +1,16 @@
+const currentFilters = {
+    soup: null,
+    main: null,
+    salad: null,
+    drink: null,
+    dessert: null
+};
+
 function createDishCard(dish) {
     const card = document.createElement('div');
     card.className = 'dish-card';
-    card.setAttribute('data-dish', dish.keyword);  
+    card.setAttribute('data-dish', dish.keyword);
+    card.setAttribute('data-kind', dish.kind);
     
     const img = document.createElement('img');
     img.src = dish.image;
@@ -9,7 +18,7 @@ function createDishCard(dish) {
     
     const price = document.createElement('p');
     price.className = 'price';
-    price.textContent = dish.price + 'руб.';
+    price.textContent = dish.price + '₽';
     
     const name = document.createElement('p');
     name.className = 'dish-name';
@@ -37,21 +46,61 @@ function renderDishes() {
         return a.name.localeCompare(b.name, 'ru');
     });
     
-    const soupsSection = document.querySelector('#soups .dishes-grid');
-    const mainSection = document.querySelector('#main-dishes .dishes-grid');
-    const drinksSection = document.querySelector('#drinks .dishes-grid');
+    const sections = {
+        soup: document.querySelector('#soups .dishes-grid'),
+        main: document.querySelector('#main-dishes .dishes-grid'),
+        salad: document.querySelector('#salads .dishes-grid'),
+        drink: document.querySelector('#drinks .dishes-grid'),
+        dessert: document.querySelector('#desserts .dishes-grid')
+    };
+    
+    Object.values(sections).forEach(section => {
+        if (section) section.innerHTML = '';
+    });
     
     sortedDishes.forEach(dish => {
-        const card = createDishCard(dish);
+        const section = sections[dish.category];
+        if (!section) return;
         
-        if (dish.category === 'soup') {
-            soupsSection.appendChild(card);
-        } else if (dish.category === 'main') {
-            mainSection.appendChild(card);
-        } else if (dish.category === 'drink') {
-            drinksSection.appendChild(card);
+        const currentFilter = currentFilters[dish.category];
+        if (currentFilter === null || currentFilter === dish.kind) {
+            const card = createDishCard(dish);
+            section.appendChild(card);
         }
     });
 }
 
-document.addEventListener('DOMContentLoaded', renderDishes);
+
+function filterDishes(category, kind) {
+    if (currentFilters[category] === kind) {
+        currentFilters[category] = null;
+    } else {
+        currentFilters[category] = kind;
+    }
+    
+    const filterButtons = document.querySelectorAll(`[data-category="${category}"]`);
+    filterButtons.forEach(button => {
+        const buttonKind = button.getAttribute('data-kind');
+        if (buttonKind === kind && currentFilters[category] === kind) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+    
+    renderDishes();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderDishes();
+    
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = button.getAttribute('data-category');
+            const kind = button.getAttribute('data-kind');
+            filterDishes(category, kind);
+        });
+    });
+});

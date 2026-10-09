@@ -1,13 +1,17 @@
 const selectedDishes = {
     soup: null,
     main: null,
-    drink: null
+    salad: null,
+    drink: null,
+    dessert: null
 };
 
 const categoryNames = {
     soup: 'Суп',
     main: 'Главное блюдо',
-    drink: 'Напиток'
+    salad: 'Салат/стартер',
+    drink: 'Напиток',
+    dessert: 'Десерт'
 };
 
 function updateOrderSection() {
@@ -16,12 +20,14 @@ function updateOrderSection() {
     
     for (const category in selectedDishes) {
         const categoryBlock = document.getElementById('selected-' + category);
+        if (!categoryBlock) continue;
+        
         const dishParagraph = categoryBlock.querySelector('.selected-dish');
         const categoryTitle = categoryBlock.querySelector('h4');
         
         if (selectedDishes[category]) {
             const dish = selectedDishes[category];
-            dishParagraph.textContent = dish.name + ' ' + dish.price + 'руб.';
+            dishParagraph.textContent = dish.name + ' ' + dish.price + '₽';
             categoryTitle.style.display = 'block';
             totalPrice += dish.price;
             hasAnySelection = true;
@@ -30,10 +36,14 @@ function updateOrderSection() {
                 dishParagraph.textContent = 'Ничего не выбрано';
             } else if (category === 'main') {
                 dishParagraph.textContent = 'Блюдо не выбрано';
+            } else if (category === 'salad') {
+                dishParagraph.textContent = 'Салат не выбран';
             } else if (category === 'drink') {
                 dishParagraph.textContent = 'Напиток не выбран';
+            } else if (category === 'dessert') {
+                dishParagraph.textContent = 'Десерт не выбран';
             }
-            categoryTitle.style.display = 'none';  
+            categoryTitle.style.display = 'none';
         }
     }
     
@@ -42,7 +52,7 @@ function updateOrderSection() {
     
     if (hasAnySelection) {
         totalBlock.style.display = 'block';
-        totalPriceParagraph.textContent = totalPrice + 'руб.';
+        totalPriceParagraph.textContent = totalPrice + '₽';
     } else {
         totalBlock.style.display = 'none';
     }
@@ -53,12 +63,10 @@ function handleDishClick(event) {
     if (!card) return;
     
     const keyword = card.getAttribute('data-dish');
-    
     const dish = dishes.find(d => d.keyword === keyword);
     if (!dish) return;
     
     selectedDishes[dish.category] = dish;
-    
     updateOrderSection();
     
     document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
