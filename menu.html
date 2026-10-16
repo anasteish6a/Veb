@@ -24,62 +24,141 @@
     </header>
 
     <main>
+        <section id="combos">
+            <h2>Доступные для заказа комбо</h2>
+            
+            <div class="combos-grid">
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="images/icons/soup.png" alt="Суп">
+                        <span>Суп</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/main.png" alt="Главное блюдо">
+                        <span>Главное блюдо</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/salad.png" alt="Салат">
+                        <span>Салат</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/drink.png" alt="Напиток">
+                        <span>Напиток</span>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="images/icons/soup.png" alt="Суп">
+                        <span>Суп</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/main.png" alt="Главное блюдо">
+                        <span>Главное блюдо</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/drink.png" alt="Напиток">
+                        <span>Напиток</span>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="images/icons/soup.png" alt="Суп">
+                        <span>Суп</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/salad.png" alt="Салат">
+                        <span>Салат</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/drink.png" alt="Напиток">
+                        <span>Напиток</span>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="images/icons/main.png" alt="Главное блюдо">
+                        <span>Главное блюдо</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/salad.png" alt="Салат">
+                        <span>Салат</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/drink.png" alt="Напиток">
+                        <span>Напиток</span>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="images/icons/main.png" alt="Главное блюдо">
+                        <span>Главное блюдо</span>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="images/icons/drink.png" alt="Напиток">
+                        <span>Напиток</span>
+                    </div>
+                </div>
+
+                <div class="combo-item dessert-info">
+                    <div class="combo-dish">
+                        <img src="images/icons/desert.png" alt="Десерт">
+                        <span>Десерт</span>
+                        <small>(Можно добавить к любому заказу)</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="soups">
             <h2>Выберите суп</h2>
-            
             <div class="filters">
                 <a href="#" class="filter-btn" data-category="soup" data-kind="fish">рыбный</a>
                 <a href="#" class="filter-btn" data-category="soup" data-kind="meat">мясной</a>
                 <a href="#" class="filter-btn" data-category="soup" data-kind="veg">вегетарианский</a>
             </div>
-            
             <div class="dishes-grid"></div>
         </section>
 
         <section id="main-dishes">
             <h2>Выберите главное блюдо</h2>
-            
             <div class="filters">
                 <a href="#" class="filter-btn" data-category="main" data-kind="fish">рыбное</a>
                 <a href="#" class="filter-btn" data-category="main" data-kind="meat">мясное</a>
                 <a href="#" class="filter-btn" data-category="main" data-kind="veg">вегетарианское</a>
             </div>
-            
             <div class="dishes-grid"></div>
         </section>
 
         <section id="salads">
             <h2>Выберите салат или стартер</h2>
-            
             <div class="filters">
                 <a href="#" class="filter-btn" data-category="salad" data-kind="fish">рыбный</a>
                 <a href="#" class="filter-btn" data-category="salad" data-kind="meat">мясной</a>
                 <a href="#" class="filter-btn" data-category="salad" data-kind="veg">вегетарианский</a>
             </div>
-            
             <div class="dishes-grid"></div>
         </section>
 
         <section id="drinks">
             <h2>Выберите напиток</h2>
-            
             <div class="filters">
                 <a href="#" class="filter-btn" data-category="drink" data-kind="cold">холодный</a>
                 <a href="#" class="filter-btn" data-category="drink" data-kind="hot">горячий</a>
             </div>
-            
             <div class="dishes-grid"></div>
         </section>
 
         <section id="desserts">
             <h2>Выберите десерт</h2>
-            
             <div class="filters">
                 <a href="#" class="filter-btn" data-category="dessert" data-kind="small">маленькая порция</a>
                 <a href="#" class="filter-btn" data-category="dessert" data-kind="medium">средняя порция</a>
                 <a href="#" class="filter-btn" data-category="dessert" data-kind="large">большая порция</a>
             </div>
-            
             <div class="dishes-grid"></div>
         </section>
 
@@ -192,5 +271,6 @@
     <script src="dishes.js"></script>
     <script src="render.js"></script>
     <script src="order.js"></script>
+    <script src="validate.js"></script> 
 </body>
 </html>

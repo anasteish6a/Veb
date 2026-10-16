@@ -608,3 +608,141 @@ footer {
         justify-content: center;
     }
 }
+/* Стили для блока комбо */
+#combos {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#combos h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #000;
+}
+
+.combos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    justify-items: center;
+}
+
+.combo-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.combo-dish img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.combo-dish img:hover {
+    transform: translateY(-10px) scale(1.1);
+}
+
+.combo-dish span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+
+.combo-dish small {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin-top: -5px;
+}
+
+.dessert-info {
+    grid-column: 3;
+}
+
+/* Адаптивность для комбо */
+@media screen and (max-width: 800px) {
+    .combos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .dessert-info {
+        grid-column: 1 / -1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .combos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .combo-item {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.notification-box {
+    background-color: white;
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+}
+
+.notification-box p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.notification-btn {
+    padding: 12px 40px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: white;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.notification-btn:hover {
+    background-color: #000;
+    color: white;
+}
