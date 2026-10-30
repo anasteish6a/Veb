@@ -746,3 +746,74 @@ footer {
     background-color: #000;
     color: white;
 }
+
+/* Выбранная карточка */
+.dish-card.selected {
+    border: 2px solid #e74c3c;
+}
+
+.dish-card .add-btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.order-sticky-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px 40px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+.order-sticky-panel.hidden {
+    display: none;
+}
+
+.order-sticky-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.order-total {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.order-total strong {
+    font-size: 24px;
+}
+
+.btn-goto-order {
+    background-color: #f0f0f0;
+    color: #999;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.btn-goto-order:not(.disabled) {
+    background-color: #000;
+    color: white;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.btn-goto-order:not(.disabled):hover {
+    background-color: #333;
+}
+
+main {
+    padding-bottom: 100px;
+}

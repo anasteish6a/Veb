@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заказ - Food Construct</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oranienbaum&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="order-page.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <h1>Food Construct</h1>
+            <nav>
+                <a href="task.html">О нас</a>
+                <a href="menu.html">Собрать ланч</a>
+                <a href="order-page.html" id="active">Оформить заказ</a>
+                <a href="#orders">Заказы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="order-composition-section">
+            <h2>Состав заказа</h2>
+            <div id="order-composition" class="order-composition">
+                <!-- Карточки блюд загрузятся через JS -->
+            </div>
+        </section>
+
+        <section class="order-form-section">
+            <h2>Оформление заказа</h2>
+            <form id="order-form" class="order-form">
+                <div class="form-columns">
+                    <div class="order-summary" id="order-summary">
+                        <!-- Загрузится через JS -->
+                    </div>
+
+                    <div class="customer-data">
+                        <h3>Ваши данные</h3>
+
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            <label for="newsletter">Получать информацию о скидках и акциях</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Номер телефона</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Адрес доставки</label>
+                            <input type="text" id="address" name="address" required>
+                            <span class="hint">Доставка осуществляется только по Москве</span>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Время доставки:</p>
+                            <div class="radio-group">
+                                <input type="radio" id="asap" name="delivery_time" value="now" required>
+                                <label for="asap">Как можно скорее</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="specific-time" name="delivery_time" value="by_time">
+                                <label for="specific-time">К указанному времени</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="delivery-time">Укажите время доставки</label>
+                            <input type="time" id="delivery-time" name="delivery_time_value" min="07:00" max="23:00" step="300">
+                            <span class="hint">Доступное время доставки с 7:00 до 23:00</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Комментарии к заказу</label>
+                            <textarea id="comment" name="comment" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="reset" class="btn-reset">Сбросить</button>
+                            <button type="submit" class="btn-submit">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer id="contacts">
+        <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+        <p style="margin-top: 10px; font-size: 14px; color: #ccc;">@ 2026 Food Construct</p>
+    </footer>
+
+    <script src="order-page.js"></script>
+</body>
+</html>

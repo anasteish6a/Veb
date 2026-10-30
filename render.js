@@ -1,6 +1,3 @@
-// render.js
-
-// Объект для хранения текущих фильтров по категориям
 const currentFilters = {
     soup: null,
     main: null,
@@ -9,23 +6,19 @@ const currentFilters = {
     dessert: null
 };
 
-// Функция создания карточки блюда
 function createDishCard(dish) {
     const card = document.createElement('div');
     card.className = 'dish-card';
     card.setAttribute('data-dish', dish.keyword);
     card.setAttribute('data-kind', dish.kind);
+    card.setAttribute('data-id', dish.id);
     
     const img = document.createElement('img');
-    
-    // ИЗМЕНЕНИЕ: Просто берем путь из API. 
-    // Так как картинки лежат локально в папке проекта, браузер найдет их сам.
-    img.src = dish.image; 
+    img.src = dish.image;
     img.alt = dish.name;
     
-    // Заглушка на случай, если вы ошиблись в названии файла или его нет в папке
     img.onerror = function() {
-        this.src = 'https://via.placeholder.com/300x300?text=No+Image';
+        this.src = 'https://via.placeholder.com/300x200/CCCCCC/000000?text=No+Image';
     };
     
     const price = document.createElement('p');
@@ -53,14 +46,9 @@ function createDishCard(dish) {
     return card;
 }
 
-// Функция отображения блюд с учётом фильтра
 function renderDishes() {
-    // Сортируем блюда по алфавиту
-    const sortedDishes = [...dishes].sort((a, b) => {
-        return a.name.localeCompare(b.name, 'ru');
-    });
+    const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
     
-    // Находим секции
     const sections = {
         soup: document.querySelector('#soups .dishes-grid'),
         main: document.querySelector('#main-dishes .dishes-grid'),
@@ -69,26 +57,26 @@ function renderDishes() {
         dessert: document.querySelector('#desserts .dishes-grid')
     };
     
-    // Очищаем секции
     Object.values(sections).forEach(section => {
         if (section) section.innerHTML = '';
     });
     
-    // Перебираем блюда и добавляем в соответствующие секции
     sortedDishes.forEach(dish => {
         const section = sections[dish.category];
         if (!section) return;
         
-        // Проверяем, соответствует ли блюдо текущему фильтру
         const currentFilter = currentFilters[dish.category];
         if (currentFilter === null || currentFilter === dish.kind) {
             const card = createDishCard(dish);
             section.appendChild(card);
         }
     });
+    
+    if (typeof initOrderState === 'function') {
+        initOrderState();
+    }
 }
 
-// Функция фильтрации блюд
 function filterDishes(category, kind) {
     if (currentFilters[category] === kind) {
         currentFilters[category] = null;
@@ -109,15 +97,10 @@ function filterDishes(category, kind) {
     renderDishes();
 }
 
-// Асинхронная инициализация
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Сначала ждем загрузки данных с сервера
     await loadDishes();
-    
-    // 2. Только после этого рендерим карточки
     renderDishes();
     
-    // 3. Навешиваем обработчики на кнопки фильтров
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
         button.addEventListener('click', (e) => {
