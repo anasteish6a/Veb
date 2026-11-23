@@ -1,20 +1,16 @@
 const API_URL = "https://web-basics-api-gagashaggy.msk1.amvera.tech";
 const API_KEY = "2660bcf4-754f-3f56-982f-1b39036418db";
 
-// Глобальные данные
-let orders = [];      // список заказов
-let allDishes = [];   // все блюда (для получения названий по ID)
+let orders = [];      
+let allDishes = [];   
 
-// === ЗАГРУЗКА ДАННЫХ ===
 
-// Загрузка всех заказов пользователя
 async function loadOrders() {
     try {
         const response = await fetch(`${API_URL}/labs/api/orders?api_key=${API_KEY}`);
         if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
         orders = await response.json();
         
-        // Сортировка по дате (новые сверху)
         orders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     } catch (error) {
         console.error('Не удалось загрузить заказы:', error);
@@ -22,7 +18,6 @@ async function loadOrders() {
     }
 }
 
-// Загрузка всех блюд (для получения названий)
 async function loadDishes() {
     try {
         const response = await fetch(`${API_URL}/labs/api/dishes/my?api_key=${API_KEY}`);
@@ -34,15 +29,12 @@ async function loadDishes() {
     }
 }
 
-// Получить блюдо по ID
 function getDishById(id) {
     if (!id || id === -1) return null;
     return allDishes.find(d => d.id === id);
 }
 
-// === ФОРМАТИРОВАНИЕ ===
 
-// Форматирование даты "25.11.2024 13:24"
 function formatDate(dateString) {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');
@@ -53,7 +45,7 @@ function formatDate(dateString) {
     return `${day}.${month}.${year} ${hours}:${minutes}`;
 }
 
-// Получить названия блюд заказа через запятую
+
 function getOrderComposition(order) {
     const names = [];
     const ids = [order.soup_id, order.main_course_id, order.salad_id, order.drink_id, order.dessert_id];
@@ -66,7 +58,6 @@ function getOrderComposition(order) {
     return names.join(', ');
 }
 
-// Рассчитать стоимость заказа
 function getOrderTotal(order) {
     const ids = [order.soup_id, order.main_course_id, order.salad_id, order.drink_id, order.dessert_id];
     let total = 0;
@@ -77,7 +68,6 @@ function getOrderTotal(order) {
     return total;
 }
 
-// Форматирование времени доставки
 function formatDeliveryTime(order) {
     if (order.delivery_type === 'now') {
         return 'В течение дня<br>(с 07:00 до 23:00)';
@@ -85,7 +75,6 @@ function formatDeliveryTime(order) {
     return order.delivery_time || '—';
 }
 
-// === ОТРИСОВКА ТАБЛИЦЫ ===
 
 function renderOrders() {
     const tbody = document.getElementById('orders-tbody');
@@ -117,7 +106,6 @@ function renderOrders() {
         tbody.appendChild(tr);
     });
     
-    // Навешиваем обработчики на кнопки
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => openViewModal(parseInt(btn.dataset.id)));
     });
@@ -129,7 +117,6 @@ function renderOrders() {
     });
 }
 
-// === МОДАЛЬНЫЕ ОКНА ===
 
 function openModal(modalId) {
     document.getElementById(modalId).classList.remove('hidden');
@@ -139,14 +126,14 @@ function closeModal(modalId) {
     document.getElementById(modalId).classList.add('hidden');
 }
 
-// Просмотр
+
 function openViewModal(orderId) {
     const order = orders.find(o => o.id === orderId);
     if (!order) return;
     
     const body = document.getElementById('view-modal-body');
     
-    // Состав заказа
+
     let compositionHTML = '';
     const categories = [
         { key: 'soup_id', label: 'Суп' },
@@ -204,7 +191,7 @@ function openViewModal(orderId) {
     openModal('view-modal');
 }
 
-// Редактирование
+
 function openEditModal(orderId) {
     const order = orders.find(o => o.id === orderId);
     if (!order) return;
@@ -218,7 +205,7 @@ function openEditModal(orderId) {
     document.getElementById('edit-email').value = order.email || '';
     document.getElementById('edit-comment').value = order.comment || '';
     
-    // Состав заказа (только для просмотра)
+    
     const compositionDiv = document.getElementById('edit-composition');
     compositionDiv.innerHTML = '';
     const categories = [
@@ -246,7 +233,6 @@ function openEditModal(orderId) {
     openModal('edit-modal');
 }
 
-// Сохранение изменений
 async function saveOrderEdit() {
     const orderId = parseInt(document.getElementById('edit-order-id').value);
     
@@ -259,7 +245,6 @@ async function saveOrderEdit() {
         comment: document.getElementById('edit-comment').value
     };
     
-    // Если есть время доставки — тип "by_time", иначе "now"
     updatedData.delivery_type = updatedData.delivery_time ? 'by_time' : 'now';
     
     try {
@@ -277,7 +262,6 @@ async function saveOrderEdit() {
         closeModal('edit-modal');
         showNotification('Заказ успешно изменён', 'success');
         
-        // Перезагружаем список
         await loadOrders();
         renderOrders();
     } catch (error) {
@@ -286,7 +270,6 @@ async function saveOrderEdit() {
     }
 }
 
-// Удаление
 function openDeleteModal(orderId) {
     document.getElementById('delete-order-id').value = orderId;
     openModal('delete-modal');
@@ -308,7 +291,6 @@ async function confirmDeleteOrder() {
         closeModal('delete-modal');
         showNotification('Заказ успешно удалён', 'success');
         
-        // Перезагружаем список
         await loadOrders();
         renderOrders();
     } catch (error) {
@@ -317,7 +299,6 @@ async function confirmDeleteOrder() {
     }
 }
 
-// === УВЕДОМЛЕНИЯ ===
 
 function showNotification(message, type) {
     const notification = document.getElementById('notification');
@@ -329,22 +310,18 @@ function showNotification(message, type) {
     }, 3000);
 }
 
-// === ИНИЦИАЛИЗАЦИЯ ===
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Загружаем данные
     await loadDishes();
     await loadOrders();
     renderOrders();
     
-    // Обработчики крестиков и кнопок закрытия
     document.querySelectorAll('.modal-close, .btn-cancel, .btn-ok').forEach(btn => {
         btn.addEventListener('click', () => {
             closeModal(btn.dataset.target);
         });
     });
     
-    // Закрытие по клику на оверлей
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
@@ -353,7 +330,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
     
-    // Обработчики сохранения и удаления
     document.getElementById('save-edit-btn').addEventListener('click', saveOrderEdit);
     document.getElementById('confirm-delete-btn').addEventListener('click', confirmDeleteOrder);
 });

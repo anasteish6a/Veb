@@ -28,7 +28,6 @@
     <main>
         <h2>История заказов</h2>
         
-        <!-- Таблица заказов -->
         <div class="orders-table-container">
             <table class="orders-table">
                 <thead>
@@ -42,7 +41,6 @@
                     </tr>
                 </thead>
                 <tbody id="orders-tbody">
-                    <!-- Строки заказов загрузятся через JS -->
                 </tbody>
             </table>
         </div>
@@ -50,7 +48,6 @@
         <p id="no-orders" class="no-orders hidden">У вас пока нет заказов.</p>
     </main>
 
-    <!-- Модальное окно: Просмотр -->
     <div id="view-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -58,7 +55,6 @@
                 <button class="modal-close" data-target="view-modal">×</button>
             </div>
             <div class="modal-body" id="view-modal-body">
-                <!-- Заполняется через JS -->
             </div>
             <div class="modal-footer">
                 <button class="btn-ok" data-target="view-modal">Ок</button>
@@ -66,7 +62,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно: Редактирование -->
     <div id="edit-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -127,7 +122,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно: Удаление -->
     <div id="delete-modal" class="modal-overlay hidden">
         <div class="modal-box modal-small">
             <div class="modal-header">
@@ -145,7 +139,6 @@
         </div>
     </div>
 
-    <!-- Уведомление -->
     <div id="notification" class="notification hidden"></div>
 
     <footer id="contacts">
