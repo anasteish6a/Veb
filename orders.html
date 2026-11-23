@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказы - Food Construct</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oranienbaum&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <h1>Food Construct</h1>
+            <nav>
+                <a href="task.html">О нас</a>
+                <a href="menu.html">Собрать ланч</a>
+                <a href="order-page.html">Оформить заказ</a>
+                <a href="orders.html" id="active">Заказы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2>История заказов</h2>
+        
+        <!-- Таблица заказов -->
+        <div class="orders-table-container">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Дата оформления</th>
+                        <th>Состав заказа</th>
+                        <th>Стоимость</th>
+                        <th>Время доставки</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-tbody">
+                    <!-- Строки заказов загрузятся через JS -->
+                </tbody>
+            </table>
+        </div>
+        
+        <p id="no-orders" class="no-orders hidden">У вас пока нет заказов.</p>
+    </main>
+
+    <!-- Модальное окно: Просмотр -->
+    <div id="view-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Просмотр заказа</h3>
+                <button class="modal-close" data-target="view-modal">×</button>
+            </div>
+            <div class="modal-body" id="view-modal-body">
+                <!-- Заполняется через JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ok" data-target="view-modal">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Редактирование -->
+    <div id="edit-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Редактирование заказа</h3>
+                <button class="modal-close" data-target="edit-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <input type="hidden" id="edit-order-id">
+                    
+                    <div class="edit-row">
+                        <span class="edit-label">Дата оформления</span>
+                        <span class="edit-value" id="edit-date"></span>
+                    </div>
+                    
+                    <h4>Доставка</h4>
+                    
+                    <div class="form-group">
+                        <label for="edit-name">Имя получателя</label>
+                        <input type="text" id="edit-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-address">Адрес доставки</label>
+                        <input type="text" id="edit-address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-time">Время доставки</label>
+                        <input type="time" id="edit-time" min="07:00" max="23:00" step="300">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-phone">Телефон</label>
+                        <input type="tel" id="edit-phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-email">Email</label>
+                        <input type="email" id="edit-email" required>
+                    </div>
+                    
+                    <h4>Комментарий</h4>
+                    <div class="form-group">
+                        <textarea id="edit-comment" rows="3"></textarea>
+                    </div>
+                    
+                    <h4>Состав заказа</h4>
+                    <div id="edit-composition"></div>
+                    
+                    <p class="total-line">Стоимость: <strong id="edit-total">0₽</strong></p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" data-target="edit-modal">Отмена</button>
+                <button class="btn-save" id="save-edit-btn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Удаление -->
+    <div id="delete-modal" class="modal-overlay hidden">
+        <div class="modal-box modal-small">
+            <div class="modal-header">
+                <h3>Удаление заказа</h3>
+                <button class="modal-close" data-target="delete-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить заказ?</p>
+                <input type="hidden" id="delete-order-id">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" data-target="delete-modal">Отмена</button>
+                <button class="btn-danger" id="confirm-delete-btn">Да</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div id="notification" class="notification hidden"></div>
+
+    <footer id="contacts">
+        <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+        <p style="margin-top: 10px; font-size: 14px; color: #ccc;">@ 2026 Food Construct</p>
+    </footer>
+
+    <script src="orders.js"></script>
+</body>
+</html>
