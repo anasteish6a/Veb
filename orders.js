@@ -36,12 +36,22 @@ function getDishById(id) {
 
 
 function formatDate(dateString) {
-    const date = new Date(dateString);
+    if (!dateString) return '—';
+    let isoString = dateString.replace(' ', 'T');
+    const hasTimezone = /[Zz]$/.test(isoString) || /[+-]\d{2}:?\d{2}$/.test(isoString);
+    if (!hasTimezone) {
+        isoString += 'Z';
+    }
+
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) return dateString;
+
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
+
     return `${day}.${month}.${year} ${hours}:${minutes}`;
 }
 
@@ -90,21 +100,23 @@ function renderOrders() {
     noOrders.classList.add('hidden');
     
     orders.forEach((order, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${formatDate(order.created_at)}</td>
-            <td>${getOrderComposition(order)}</td>
-            <td>${getOrderTotal(order)}₽</td>
-            <td>${formatDeliveryTime(order)}</td>
-            <td class="actions-cell">
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${formatDate(order.created_at)}</td>
+        <td>${getOrderComposition(order)}</td>
+        <td>${getOrderTotal(order)}₽</td>
+        <td>${formatDeliveryTime(order)}</td>
+        <td class="actions-cell">
+            <div class="actions-wrap">
                 <button class="action-btn view-btn" data-id="${order.id}" title="Подробнее">👁</button>
                 <button class="action-btn edit-btn" data-id="${order.id}" title="Редактировать">✏</button>
                 <button class="action-btn delete-btn" data-id="${order.id}" title="Удалить">🗑</button>
-            </td>
-        `;
-        tbody.appendChild(tr);
-    });
+            </div>
+        </td>
+    `;
+    tbody.appendChild(tr);
+});
     
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => openViewModal(parseInt(btn.dataset.id)));

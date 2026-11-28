@@ -1,0 +1,62 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+#hero {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-image {
+    max-height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+}
+
+#cta {
+    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); /* Зелёный цвет как в ваших фильтрах */
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+}
+
+.btn-primary {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.btn-primary:hover {
+    background-color: #1b5e20;
+    border-color: #1b5e20;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .hero-image {
+        max-height: 300px;
+        margin-top: 2rem;
+    }
+}
